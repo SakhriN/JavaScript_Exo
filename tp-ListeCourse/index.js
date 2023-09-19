@@ -31,31 +31,26 @@ let boum = document.getElementById("HEAD");
 boum.innerHTML = `<h1>BONJOUR <b>${personStorage.name}</b></h1>`;
 
 
+
+
+
+
 function recupe(){
     let recup = document.getElementById("texteuh").value;
-    let titre = "";
-    let nom = "";
 
     // Sélectionner le tableau
-    let tableau = document.createElement("table");
+    let tableau = document.createElement(".resultat tbody");
 
     // Créer une nouvelle ligne
     let nouvelleLigne = document.createElement("tr");
 
     // Créer des cellules pour chaque valeur
     let celluleRecup = document.createElement("td");
-    celluleRecup.textContent = recup;
-
-    let celluleTitre = document.createElement("td");
-    celluleTitre.textContent = titre;
-
-    let celluleNom = document.createElement("td");
-    celluleNom.textContent = nom;
+    celluleRecup.textContent = recup.value ;
+    console.log(recup.value)
 
     // Ajouter les cellules à la nouvelle ligne
     nouvelleLigne.appendChild(celluleRecup);
-    nouvelleLigne.appendChild(celluleTitre);
-    nouvelleLigne.appendChild(celluleNom);
 
     // Ajouter la nouvelle ligne au tableau
     tableau.appendChild(nouvelleLigne);
@@ -63,3 +58,4 @@ function recupe(){
     // Effacer les champs de saisie
     document.getElementById("texteuh").value = "";
 }
+
