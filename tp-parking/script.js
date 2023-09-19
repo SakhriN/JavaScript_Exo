@@ -33,9 +33,8 @@ btnIn.addEventListener('click', (e) => {
     if (tab.includes(test)) {
         alert(`Tu existes deja`);
     } else {
-        tab.push(test);
         inTime = new Date()
-        console.log(inTime)
+        tab.push(test);
         console.table(tab)
     }
 })
