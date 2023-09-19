@@ -22,10 +22,9 @@ let sortie = document.getElementById("sortie")
 
 
 function timeout(nb) {
-    message = resultat + " minutes, ça fera " + nb + " €"
-    sortie.innerHTML = message
     setTimeout(() => {
-sortie.innerHTML = "";
+        message = resultat + " minutes, ça fera " + nb + " €"
+        sortie.innerHTML = message
     }, 5000);
 }
 btnIn.addEventListener('click', (e) => {
@@ -45,19 +44,19 @@ btnIn.addEventListener('click', (e) => {
 btnOut.addEventListener('click', (e) => {
     e.preventDefault();
     test = document.getElementById("immatriculation").value
-    
     if (tab.includes(test)) {
         outTime = new Date()
         console.log(outTime)
         resultat = (outTime - inTime) / 1000
-        switch (true) {
-            case (resultat <= 15) :
+
+        switch (resultat) {
+            case (resultat <= 15):
                 timeout(0.8)
                 break;
-            case (resultat <= 30) :
+            case (resultat <= 30):
                 timeout(1.3)
                 break;
-            case (resultat <= 45) :
+            case (resultat <= 45):
                 timeout(1.7)
                 break;
             default:
