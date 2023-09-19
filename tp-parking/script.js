@@ -50,6 +50,14 @@ btnOut.addEventListener('click', (e) => {
         outTime = new Date()
         console.log(outTime)
         resultat = (outTime - inTime) / 1000
+
+        const indexToRemove = tab.indexOf(test);
+        
+        if (indexToRemove !== -1) {
+            tab.splice(indexToRemove, 1);
+            console.table(tab)
+        }
+
         switch (true) {
             case (resultat <= 15) :
                 timeout(0.8)
