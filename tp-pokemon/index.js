@@ -28,8 +28,6 @@ namepokemon.innerHTML = Name;
 heighpokemon.innerHTML = height;
 weighpokemon.innerHTML = weight;
 
-let btnprecedent = false
-let btnsuivant = false
 
 function fatch() {
 
