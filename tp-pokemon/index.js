@@ -1,7 +1,6 @@
 const url = "https://pokeapi.co/api/v2/pokemon/"
 
 let nb1 = Math.floor(Math.random() * 493) + 1;
-
 let nb1string = url + nb1
 
 console.log(nb1string);
@@ -19,7 +18,7 @@ fetch(nb1string)
         // 2. Convertissez les données en chaîne JSON
         let jsonData = JSON.stringify(data);
 
-        // 3. Enregistrez la chaîne JSON dans le localStorage
+        // 3. Enregistre la chaîne JSON dans le localStorage
         localStorage.setItem('pokemon1', jsonData);
 
         console.log('Données de l\'API enregistrées dans le localStorage.');
@@ -32,19 +31,21 @@ fetch(nb1string)
 let jsonData = localStorage.getItem('pokemon1');
 
 let poke = document.getElementById("poke")
-let heigh = document.getElementById("heigh")
-let weigh = document.getElementById("weigh")
+let namepokemon = document.getElementById("name-pokemon")
+let heighpokemon = document.getElementById("heigh")
+let weighpokemon = document.getElementById("weigh")
 
 let data = JSON.parse(jsonData);
 
 let sprite = data.sprites.front_default;
-
+let Name = data.name;
 let height = data.height;
 let weight = data.weight;
 
 poke.src = sprite;
-heigh.innerHTML = height;
-weigh.innerHTML = weight;
+namepokemon.innerHTML = Name;
+heighpokemon.innerHTML = height;
+weighpokemon.innerHTML = weight;
 
 
 function changePokemon() {
@@ -80,14 +81,14 @@ function changePokemon() {
     data = JSON.parse(jsonData);
 
     sprite = data.sprites.front_default;
-
-
+    Name = data.name;
     height = data.height;
     weight = data.weight;
 
     poke.src = sprite;
-    heigh.innerHTML = height;
-    weigh.innerHTML = weight;
+    namepokemon.innerHTML = Name;
+    heighpokemon.innerHTML = height;
+    weighpokemon.innerHTML = weight;
 
 }
 
