@@ -5,6 +5,24 @@ class Person {
         this.name = name;
     }
 }
+class itemCourse {
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+class supBtn {
+    constructor(fnct) {
+        this.fnct = fnct;
+    }
+}
+
+class edtBtn {
+    constructor(fnct) {
+        this.fnct = fnct;
+    }
+}
+
 
 // Fonction pour vérifier si une valeur existe dans le localStorage
 function valeurExisteDansLocalStorage(clé) {
@@ -32,30 +50,41 @@ boum.innerHTML = `<h1>BONJOUR <b>${personStorage.name}</b></h1>`;
 
 
 
+const test = document.querySelector("#recuperation")
+test.addEventListener("click",recupe)
 
 
-
-function recupe(){
-    let recup = document.getElementById("texteuh").value;
-
+function recupe(e){
+    e.preventDefault()
+    let texte = document.getElementById("texte").value;
+    let item = new itemCourse(texte)
+    console.log(texte);
+    localStorage.setItem("Item", JSON.stringify(item))
+    let iteme = JSON.parse(localStorage.getItem("Item"));
     // Sélectionner le tableau
-    let tableau = document.createElement(".resultat tbody");
+    let tableau = document.querySelector(".resultat tbody");
 
     // Créer une nouvelle ligne
     let nouvelleLigne = document.createElement("tr");
 
     // Créer des cellules pour chaque valeur
     let celluleRecup = document.createElement("td");
-    celluleRecup.textContent = recup.value ;
-    console.log(recup.value)
+    celluleRecup.textContent = iteme.name;
+    
+    let celluleEdit = document.createElement("td");
+    celluleEdit.textContent = "Editer" ;
+    let celluleSuppr = document.createElement("td");
+    celluleSuppr.textContent = "Supprimer" ;
 
     // Ajouter les cellules à la nouvelle ligne
     nouvelleLigne.appendChild(celluleRecup);
+    nouvelleLigne.appendChild(celluleEdit);
+    nouvelleLigne.appendChild(celluleSuppr);
 
     // Ajouter la nouvelle ligne au tableau
     tableau.appendChild(nouvelleLigne);
 
     // Effacer les champs de saisie
-    document.getElementById("texteuh").value = "";
+    document.getElementById("texte").value = "";
 }
 
