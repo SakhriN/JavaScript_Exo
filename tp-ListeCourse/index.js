@@ -71,9 +71,12 @@ function recupe(e){
     let celluleRecup = document.createElement("td");
     celluleRecup.textContent = iteme.name;
     
-    let celluleEdit = document.createElement("td");
+    let celluleEdit = document.createElement("button");
+    celluleEdit.setAttribute("class", "Edit btn btn-warning");
     celluleEdit.textContent = "Editer" ;
-    let celluleSuppr = document.createElement("td");
+
+    let celluleSuppr = document.createElement("button");
+    celluleSuppr.setAttribute("class", "Delete btn btn-primary");
     celluleSuppr.textContent = "Supprimer" ;
 
     // Ajouter les cellules à la nouvelle ligne
