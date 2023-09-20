@@ -10,22 +10,32 @@
 </head>
 
 <body>
-    <div class="text-center">
+    <div class="container text-center">
         <table>
             <tr>
+                <td><button id="precedent" class="btn btn-danger"> Précédent</button></td>
                 <td><img class="rounded-circle border border-5" id="poke"></img></td>
+                <td><button id="suivant" class="btn btn-danger"> Suivant</button></td>
             </tr>
             <tr>
+                <td></td>
                 <td class="bg-dark text-light" id="name-pokemon"></td>
+                <td></td>
             </tr>
             <tr>
+                <td></td>
                 <td class="bg-dark text-light" id="heigh"></td>
+                <td></td>
             </tr>
             <tr>
+                <td></td>
                 <td class="bg-dark text-light" id="weigh"></td>
+                <td></td>
             </tr>
             <tr>
+                <td></td>
                 <td><button id="change" class="btn btn-danger"> Changer</button></td>
+                <td></td>
             </tr>
             <tr>
 
@@ -33,5 +43,10 @@
         </table>
     </div>
 </body>
-
+<style>
+    .container{
+        display: flex;
+        justify-content: center;
+    }
+</style>
 </html>
