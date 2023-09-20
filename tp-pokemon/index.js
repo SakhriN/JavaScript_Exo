@@ -7,25 +7,6 @@ console.log(nb1string);
 nb1 = Math.floor(Math.random() * max) + 1;
 
 // 1. Faites une requête API pour obtenir les données
-fetch(nb1string)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('La réponse de l\'API n\'est pas OK');
-        }
-        return response.json(); // Convertit la réponse en JSON
-    })
-    .then(data => {
-        // 2. Convertissez les données en chaîne JSON
-        let jsonData = JSON.stringify(data);
-
-        // 3. Enregistre la chaîne JSON dans le localStorage
-        localStorage.setItem('pokemon1', jsonData);
-
-        console.log('Données de l\'API enregistrées dans le localStorage.');
-    })
-    .catch(error => {
-        console.error('Erreur lors de la récupération des données de l\'API :', error);
-    });
 
 
 let jsonData = localStorage.getItem('pokemon1');
@@ -47,11 +28,10 @@ namepokemon.innerHTML = Name;
 heighpokemon.innerHTML = height;
 weighpokemon.innerHTML = weight;
 
+let btnprecedent = false
+let btnsuivant = false
 
-function changePokemon() {
-
-    nb1 = Math.floor(Math.random() * 493) + 1;
-    nb1string = url + nb1
+function fatch() {
 
     fetch(nb1string)
         .then(response => {
@@ -89,102 +69,37 @@ function changePokemon() {
     namepokemon.innerHTML = Name;
     heighpokemon.innerHTML = height;
     weighpokemon.innerHTML = weight;
+}
 
+function changePokemon() {
+
+    nb1 = Math.floor(Math.random() * 493) + 1;
+    fatch();
 }
 
 function precedentPokemon() {
     if (nb1 > 1) {
-        nb1string = url + (nb1-1)
-
-
-        fetch(nb1string)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('La réponse de l\'API n\'est pas OK');
-                }
-                return response.json();
-            })
-            .then(data => {
-
-                jsonData = JSON.stringify(data);
-
-
-                localStorage.setItem('pokemon1', jsonData);
-
-                console.log('Données de l\'API enregistrées dans le localStorage.');
-            })
-            .catch(error => {
-                console.error('Erreur lors de la récupération des données de l\'API :', error);
-            });
-
-
-        jsonData = localStorage.getItem('pokemon1');
-
-        poke = document.getElementById("poke")
-
-        data = JSON.parse(jsonData);
-
-        sprite = data.sprites.front_default;
-        Name = data.name;
-        height = data.height;
-        weight = data.weight;
-
-        poke.src = sprite;
-        namepokemon.innerHTML = Name;
-        heighpokemon.innerHTML = height;
-        weighpokemon.innerHTML = weight;
+        nb1 = nb1 - 1
+        nb1string = url + nb1
+            fatch();
     }
-    else{
+    else {
+
         alert("Ce ne sera pas possible d'aller au dessous")
     }
 }
 
 function suivantPokemon() {
     if (nb1 < max) {
-        nb1string = url + (nb1+1)
-
-
-        fetch(nb1string)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('La réponse de l\'API n\'est pas OK');
-                }
-                return response.json();
-            })
-            .then(data => {
-
-                jsonData = JSON.stringify(data);
-
-
-                localStorage.setItem('pokemon1', jsonData);
-
-                console.log('Données de l\'API enregistrées dans le localStorage.');
-            })
-            .catch(error => {
-                console.error('Erreur lors de la récupération des données de l\'API :', error);
-            });
-
-
-        jsonData = localStorage.getItem('pokemon1');
-
-        poke = document.getElementById("poke")
-
-        data = JSON.parse(jsonData);
-
-        sprite = data.sprites.front_default;
-        Name = data.name;
-        height = data.height;
-        weight = data.weight;
-
-        poke.src = sprite;
-        namepokemon.innerHTML = Name;
-        heighpokemon.innerHTML = height;
-        weighpokemon.innerHTML = weight;
+        nb1 = nb1 + 1
+        nb1string = url + nb1
+        fatch()   
     }
-    else{
+    else {
         alert("Ce ne sera pas possible d'aller au dela")
     }
 }
+
 
 
 const change = document.getElementById("change")
